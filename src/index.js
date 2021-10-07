@@ -252,7 +252,13 @@ module.exports = function (id, options, values) {
         self.matchingItems.push(is[i])
         is[i].hide()
       } else {
-        is[i].hide()
+        if (self.listClass === options.paginationClass || self.listClass === 'pagination') {
+          is[i].show()
+          self.visibleItems.push(is[i]._values)
+          self.matchingItems.push(is[i]._values)
+        } else {
+          is[i].hide()
+        }
       }
     }
     self.trigger('updated')
